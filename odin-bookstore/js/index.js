@@ -12,6 +12,7 @@ let bookList = document.querySelector(".book__list");
 
 function Book(title, author, pages, isRead) {
   // the constructor...
+  if (!new.target) throw new Error("Constructor called without new operator.");
   this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
@@ -28,6 +29,16 @@ function removeBookFromLibrary(bookId) {
   if (index !== -1) {
     myLibrary.splice(index, 1);
     displayBook();
+  }
+}
+
+function toggleReadStatus(bookId) {
+  console.log(bookId);
+  let book = myLibrary.find(book => book.id === bookId);
+     console.log(book)
+  if(book){
+   book.isRead = !book.isRead
+   displayBook()
   }
 }
 
@@ -51,24 +62,27 @@ function createCard(book) {
   bookEl
     .querySelector(".delete-btn")
     .addEventListener("click", () => removeBookFromLibrary(book.id));
+  bookEl
+    .querySelector(".change-btn")
+    .addEventListener("click", () => toggleReadStatus(book.id));
 
   return bookEl;
 }
 
 function displayBook() {
   bookList.innerHTML = "";
-  if (myLibrary.length > 0) {
-    myLibrary.forEach((book) => {
+  
+  if (myLibrary.length === 0) {
+    let emptyMsg = document.createElement("h1");
+    emptyMsg.textContent = "MyLibrary is Empty";
+    bookList.appendChild(emptyMsg);
+  } 
+
+   myLibrary.forEach((book) => {
       const showBook = createCard(book);
       bookList.appendChild(showBook);
     });
-  } else {
-    let h1 = document.createElement("h1");
-    h1.textContent = "MyLibrary is Empty";
-  
-    bookList.appendChild(h1);
-    
-  }
 }
 
+//Initialize Render
 displayBook();
