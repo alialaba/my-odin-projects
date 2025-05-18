@@ -23,6 +23,14 @@ function addBookToLibrary() {
   // take params, create a book then store it in the array
 }
 
+function removeBookFromLibrary(bookId) {
+  let index = myLibrary.findIndex((book) => book.id === bookId);
+  if (index !== -1) {
+    myLibrary.splice(index, 1);
+    displayBook();
+  }
+}
+
 function createCard(book) {
   const bookEl = document.createElement("div");
   bookEl.classList = "book";
@@ -30,25 +38,37 @@ function createCard(book) {
   bookEl.innerHTML = `
     <h3 class="book_title">${book.title}</h3>
           <p class="book_author">${book.author}</p>
-          <p class="book_status">Status: <span>${book.isRead ? "Read" : "Not Read"}</span></p>
+          <p class="book_status">Status: <span>${
+            book.isRead ? "Read" : "Not Read"
+          }</span></p>
           <div class="btns">
             <button class="change-btn">Change read status</button>
             <button class="delete-btn">Delete book</button>
           </div>
   `;
 
-  
+  //EventListener
+  bookEl
+    .querySelector(".delete-btn")
+    .addEventListener("click", () => removeBookFromLibrary(book.id));
+
   return bookEl;
 }
 
-
-
-function displayBook (){
-  bookList.innerHTML = ""
-  myLibrary.forEach(book =>{
-    const showBook = createCard(book);
-    bookList.appendChild(showBook);
-  })
+function displayBook() {
+  bookList.innerHTML = "";
+  if (myLibrary.length > 0) {
+    myLibrary.forEach((book) => {
+      const showBook = createCard(book);
+      bookList.appendChild(showBook);
+    });
+  } else {
+    let h1 = document.createElement("h1");
+    h1.textContent = "MyLibrary is Empty";
+  
+    bookList.appendChild(h1);
+    
+  }
 }
 
-displayBook()
+displayBook();
