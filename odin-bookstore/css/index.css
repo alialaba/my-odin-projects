@@ -8,6 +8,7 @@ body{
     background: #ccc;
     width: min(1000px, 90%);
     margin: 0 auto;
+    position: relative;
 
 }
 button{
@@ -17,6 +18,13 @@ button{
 }
 h1{
     text-align: center;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
 }
 
 .book__list{
@@ -45,5 +53,76 @@ h1{
     color: white;
     padding: 10px;
     border-radius: 5px;
-     cursor: pointer;
+    cursor: pointer;
+}
+.add-btn{
+    background: blue;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+#dialog{
+    padding: 30px;
+    border: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    border-radius: 8px;
+
+}
+
+
+.dialog_header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5em;
+}
+.dialog_close{
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dialog_close:hover{
+    background-color: #E5E7EB;
+    
+}
+
+input:focus{
+    border: none;
+}
+.dialog__field{
+    margin-bottom: 1em;
+
+}
+.dialog__field label{
+    padding-bottom: 1em;
+}
+.dialog__field input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #E5E7EB;
+    
+}
+.dialog__add-btn{
+    background: blue;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+}
+.dialog_error{
+    color: red;
+    margin-bottom: .5em;
 }

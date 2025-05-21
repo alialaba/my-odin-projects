@@ -7,9 +7,38 @@
     <link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
+      <header class="header">
+        <h1>The Library</h1>
+        <button class="add-btn">Add Book</button>
+      </header>
 
+      <dialog id="dialog">
+        <div class="dialog_header">
+          <h4 class="dialog_text">Add New Book</h4>
+          <div class="dialog_close">✖</div>
+        </div>
+        <form method="dialog">
+          <p class="dialog_error"></p>
+          <div class="dialog__field">
+            <label for="title">Title</label>
+            <input type="text" class="title" name="title" placeholder="Deep Work">
+          </div>
+
+          <div  class="dialog__field">
+            <label for="author">Author</label>
+            <input type="text" class="author" name="author" placeholder="John Doe">
+          </div>
+
+          <div  class="dialog__field">
+            <label for="pages">Pages</label>
+            <input type="text" class="pages" name="pages" placeholder="293">
+          </div>
+          <button  class="dialog__add-btn">Add</button>
+        </form>
+
+      </dialog>
       <main>
-      <h1>The Library</h1>
+    
       <div class="book__list">
         <!-- <div class="book">
           <h3 class="book_title">Title</h3>

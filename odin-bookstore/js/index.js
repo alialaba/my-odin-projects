@@ -20,8 +20,47 @@ function Book(title, author, pages, isRead) {
   this.isRead = isRead;
 }
 
-function addBookToLibrary() {
+const dialogEl = document.getElementById("dialog");
+
+document.querySelector(".add-btn").addEventListener("click", () => {
+  // dialogEl.showModel()
+  dialogEl.showModal();
+});
+
+document.querySelector(".dialog_close").addEventListener("click", () => {
+  dialogEl.close();
+});
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (e) => {
+  //  inputTitle.value.trim()
+  e.preventDefault();
+
+  const title = document.querySelector(".title").value.trim();
+  const author = document.querySelector(".author").value.trim();
+  const pages = document.querySelector(".pages").value.trim();
+
+  if (title && author && pages) {
+    addBookToLibrary(title, author, pages, false);
+    // Clear form inputs
+    form.reset();
+
+    dialogEl.close();
+  } else {
+    const err = document.querySelector(".dialog_error");
+    err.textContent = "Please complete the fields";
+  }
+});
+
+
+function addBookToLibrary(title, author, pages, isRead = false) {
   // take params, create a book then store it in the array
+  const newBook = new Book(title, author, parseInt(pages), isRead);
+  myLibrary.push(newBook);
+
+  //display book added
+  displayBook();
 }
 
 function removeBookFromLibrary(bookId) {
@@ -34,11 +73,11 @@ function removeBookFromLibrary(bookId) {
 
 function toggleReadStatus(bookId) {
   console.log(bookId);
-  let book = myLibrary.find(book => book.id === bookId);
-     console.log(book)
-  if(book){
-   book.isRead = !book.isRead
-   displayBook()
+  let book = myLibrary.find((book) => book.id === bookId);
+  console.log(book);
+  if (book) {
+    book.isRead = !book.isRead;
+    displayBook();
   }
 }
 
@@ -49,6 +88,8 @@ function createCard(book) {
   bookEl.innerHTML = `
     <h3 class="book_title">${book.title}</h3>
           <p class="book_author">${book.author}</p>
+          <p class="book_pages">${book.pages}</p>
+
           <p class="book_status">Status: <span>${
             book.isRead ? "Read" : "Not Read"
           }</span></p>
@@ -71,17 +112,17 @@ function createCard(book) {
 
 function displayBook() {
   bookList.innerHTML = "";
-  
+
   if (myLibrary.length === 0) {
     let emptyMsg = document.createElement("h1");
     emptyMsg.textContent = "MyLibrary is Empty";
     bookList.appendChild(emptyMsg);
-  } 
+  }
 
-   myLibrary.forEach((book) => {
-      const showBook = createCard(book);
-      bookList.appendChild(showBook);
-    });
+  myLibrary.forEach((book) => {
+    const showBook = createCard(book);
+    bookList.appendChild(showBook);
+  });
 }
 
 //Initialize Render
