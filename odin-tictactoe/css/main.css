@@ -1,0 +1,138 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root{
+    --clr-yellow: #fbd459;
+    --clr-peach:#ffdee7;
+    --clr-red: #f22853;
+    --clr-dark: #343427;
+    --clr-white: #fff;
+}
+
+body{
+    background-color: var(--clr-yellow);
+
+}
+
+button{
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.heading{
+    text-align: center;
+}
+.heading span{
+    color: var(--clr-red);
+}
+.game__starter{
+    width: min(500px, 90%);
+    margin: 0 auto;
+    background: var(--clr-peach);
+    padding: 2em;
+    border-radius: 8px;
+}
+
+
+.game__interface{
+    display: none;
+     width: min(600px, 90%);
+    margin: 0 auto;
+    background: var(--clr-peach);
+    padding: 2em;
+    border-radius: 8px;
+}
+.player-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     margin-bottom: 1em;
+}
+.player-col{
+ display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     gap: 10px;
+}
+.player-col__box{
+    background: var(--clr-white);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    text-align: center;
+}
+.player-col__one .player-col__symbol{
+    color: var(--clr-yellow);
+}
+
+.player-col__three .player-col__symbol{
+    color: var(--clr-white);
+}
+.player-col__round{
+    background: var(--clr-yellow);
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     gap: 2px;
+}
+.player-col__symbol{
+    background: var(--clr-red);
+    border-radius: 10px;
+    padding: .5em 1.3em;
+    color: var(--clr-white);
+    font-weight: 700;
+}
+.player-col__num{
+    font-weight: 900;
+    font-size: 25px;
+}
+.player-col__draw{
+    text-align: center;
+    /* font-size: 10px; */
+}
+
+.board{
+    border: dashed 3px  var(--clr-red);
+   
+    border-radius: 10px;
+    background: var(--clr-white);
+    padding: 3px;
+    width: min(400px, 90%);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.board__grid{
+    /* background: var(--clr-red); */
+    display: grid;
+    grid-template-columns: repeat(3, 130px);
+    grid-template-rows: repeat(3, 130px);
+    width: max-content;
+    
+}
+.cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  border: 2px dashed var(--clr-white);
+  cursor: pointer;
+  background: var(--clr-red);
+  transition: background-color 0.2s ease;
+   padding: 5px;
+}
+
+.cell:hover {
+  background-color: #e0e0e0;
+}

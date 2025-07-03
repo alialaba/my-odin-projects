@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic TAC TOE GAME</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <h1 class="heading">Tic <span>Tac</span> Toe</h1>
+    <main class="game">
+      <div class="game__starter">
+        <form class="setup">
+          <input id="player1Name" placeholder="Player 1 name" />
+          <input id="player2Name" placeholder="Player 2 name" />
+          <button id="startBtn">Start Game</button>
+        </form>
+      </div>
+
+      <div id="board" class="game__interface">
+        <!-- <h2>Hello boyzs</h2> -->
+            <div class="player-turn"></div>
+        <div class="player-row">
+          <div class="player-col player-col__one">
+            <div class="player-col__box">
+              <p class="player-col__name">player1</p>
+              <div class="player-col__symbol">X</div>
+            </div>
+             <button>Win Rounds: <span>1</span></button>
+ 
+          </div>
+
+          <div class="player-col  player-col__two">
+            <div class="player-col__round">
+ <h4 class="player-col__num">1</h4>
+              <span class="player-col__rounds">Round</span>
+            </div>
+           
+              <p class="player-col__draw">Draws: <span>0 times</span></p>
+          </div>
+
+          <div class="player-col player-col__three">
+            <div class="player-col__box">
+              <p class="player-col__name">player1</p>
+              <div class="player-col__symbol">O</div>
+            </div>
+            <button>Win Rounds: <span>1</span></button>
+          </div>
+        </div>
+
+        <!-- <div class="board"> -->
+          <div class="board__grid">
+            <!-- <div class="cell" data-index="0"></div>
+          <div class="cell" data-index="1"></div>
+          <div class="cell" data-index="2">X</div>
+          <div class="cell" data-index="3"></div>
+          <div class="cell" data-index="4">O</div>
+          <div class="cell" data-index="5"></div>
+          <div class="cell" data-index="6">O</div>
+          <div class="cell" data-index="7"></div>
+          <div class="cell" data-index="8">X</div> -->
+          </div>
+        <!-- </div> -->
+      </div>
+    </main>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
