@@ -39,11 +39,24 @@ button{
 
 .game__interface{
     display: none;
-     width: min(600px, 90%);
+    width: min(600px, 90%);
     margin: 0 auto;
     background: var(--clr-peach);
     padding: 2em;
     border-radius: 8px;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.player-turn{
+    background-color: var(--clr-yellow);
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px  auto;
+
 }
 .player-row{
     display: flex;
@@ -102,7 +115,7 @@ button{
 }
 
 .board{
-    border: dashed 3px  var(--clr-red);
+    /* border: dashed 3px  var(--clr-red);
    
     border-radius: 10px;
     background: var(--clr-white);
@@ -111,7 +124,7 @@ button{
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 .board__grid{
     /* background: var(--clr-red); */
@@ -119,18 +132,23 @@ button{
     grid-template-columns: repeat(3, 130px);
     grid-template-rows: repeat(3, 130px);
     width: max-content;
-    
+    margin: 0 auto;
+    background: white;
+    padding: 5px;
+    border-radius: 10px;
+    border: dashed 1px var(--clr-red);
 }
 .cell {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  border: 2px dashed var(--clr-white);
+  border: 1px dashed var(--clr-white);
   cursor: pointer;
   background: var(--clr-red);
   transition: background-color 0.2s ease;
-   padding: 5px;
+   /* padding: 5px; */
+   /* margin: 3px; */
 }
 
 .cell:hover {

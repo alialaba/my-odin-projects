@@ -1,20 +1,20 @@
 //Gameboard
-const gameboard = ( function(){
-    let board = Array(9).fill(null);
+const gameboard = (function () {
+  let board = Array(9).fill(null);
 
-    function getBoard() {
-        return board
-    }
+  function getBoard() {
+    return board;
+  }
 
-    function setCell(index, token) {
-       if(!board[index]) board[index] = token
-    }
+  function setCell(index, token) {
+    if (!board[index]) board[index] = token;
+  }
 
-    function resetCell() {
-       board = Array(9).fill(null);
-    }
+  function resetCell() {
+    board = Array(9).fill(null);
+  }
 
-    return {getBoard, setCell, resetCell}
+  return { getBoard, setCell, resetCell };
 })();
 
 //Player Objects
@@ -55,12 +55,10 @@ formEl.addEventListener("submit", (e) => {
     gameStarter.style.display = "none";
 
     //Game started
-    createGame.start(firstPlayer, secondPlayer)
+    createGame.start(firstPlayer, secondPlayer);
     gameInterface.style.display = "block";
-    
   }
 });
-
 
 //Game Controller
 const displayController = (function () {
@@ -73,24 +71,24 @@ const displayController = (function () {
   }
 
   function renderBoard(board, handleCellClick) {
-    boardEl.innerHTML = ""
-    board.forEach((cell, index)=>{
+    boardEl.innerHTML = "";
+    board.forEach((cell, index) => {
       const cellDiv = document.createElement("div");
       cellDiv.classList.add("cell");
       cellDiv.textContent = cell;
       cellDiv.dataset.index = index;
 
-      if(cell == "X") {
-          cellDiv.style.color = "#fbd459";
+      if (cell == "X") {
+        cellDiv.style.color = "#fbd459";
       } else if (cell == "O") {
         cellDiv.style.color = "#ffffff";
       }
 
-       if(!cell) {
-        cellDiv.addEventListener("click", ()=> handleCellClick(index))
-       }
-       boardEl.appendChild(cellDiv)
-    })
+      if (!cell) {
+        cellDiv.addEventListener("click", () => handleCellClick(index));
+      }
+      boardEl.appendChild(cellDiv);
+    });
   }
   function renderPlayerDetails(player1, player2, draws, currentRound) {
     const nameEls = document.querySelectorAll(".player-col__name");
@@ -100,9 +98,9 @@ const displayController = (function () {
     const p2Wins = document.querySelector(".player-col__three button span");
 
     if (nameEls.length == 2) {
-        nameEls[0].textContent = player1.getPlayerName();
-        nameEls[1].textContent = player2.getPlayerName();
-        // console.log(a,b)
+      nameEls[0].textContent = player1.getPlayerName();
+      nameEls[1].textContent = player2.getPlayerName();
+      // console.log(a,b)
     }
     roundEl.textContent = currentRound;
     drawEl.textContent = `${draws} Times`;
@@ -110,37 +108,56 @@ const displayController = (function () {
     p2Wins.textContent = player2.getPlayerScore();
   }
 
-  return {showMessage, renderPlayerDetails, renderBoard}
+  return { showMessage, renderPlayerDetails, renderBoard };
 })();
 
-
-//Create Game 
+//Create Game
 let player1, player2, curPlayer;
 let gameActive = false;
 let draws = 0;
 let currentRound = 1;
 const createGame = (function () {
-  
   function start(firstPlayer, secondPlayer) {
     player1 = createPlayer(firstPlayer, "X");
     player2 = createPlayer(secondPlayer, "O");
     curPlayer = player1;
     gameActive = true;
-    displayController.renderBoard(gameboard.getBoard(), playMove)
-    displayController.showMessage(`${curPlayer.getPlayerName()}'s turn`)
-    displayController.renderPlayerDetails(player1, player2, draws, currentRound)
+    displayController.renderBoard(gameboard.getBoard(), playMove);
+    displayController.showMessage(`${curPlayer.getPlayerName()}'s turn`);
+    displayController.renderPlayerDetails(
+      player1,
+      player2,
+      draws,
+      currentRound
+    );
   }
 
-function playMove(index){
-  if(!gameActive) return;
-  let board = gameboard.getBoard();
-  gameboard.setCell(index, curPlayer.getPlayerToken())
-  if(board[index]) return;
-  displayController.renderBoard(board, playMove)
+  function playMove(index) {
+    if (!gameActive) return;
+    let board = gameboard.getBoard();
+    if (board[index]) return;
+    gameboard.setCell(index, curPlayer.getPlayerToken());
+    displayController.renderBoard(board, playMove);
 
-
-
-}
+    if (checkWin(board, curPlayer.getPlayerToken())) {
+      curPlayer.addPlayerScore();
+      displayController.showMessage(`${curPlayer.getPlayerName()}'s Wins 🏆`);
+      currentRound++;
+      displayController.renderPlayerDetails(
+        player1,
+        player2,
+        draws,
+        currentRound
+      );
+      gameActive = false;
+    } else if (board.every((cell) => cell)) {
+      gameActive = false;
+      displayController.showMessage("it's a draw! 🤝");
+    } else {
+      curPlayer = curPlayer === player1 ? player2 : player1;
+      displayController.showMessage(`${curPlayer.getPlayerName()}'s turn`);
+    }
+  }
 
   function checkWin(board, token) {
     const winCombos = [
