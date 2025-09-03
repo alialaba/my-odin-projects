@@ -2,7 +2,7 @@
     constructor(element){
        this.element = element;
        this.trigger = element.querySelector(".dropdown-menu__trigger");
-       this.menu = element.querySelector(".dropdown-menu__content");
+       this.menu = element.querySelector("#dropdown-menu__content");
        this.isOpen = false;
 
        this.init()
