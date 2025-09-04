@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Element Carousel</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+  </head>
+  <body>
+    <section class="carousel">
+      
+      <div class="carousel__wrapper">
+      <div class="slider">
+        <!-- article 1 -->
+        <article class="slide">
+          <img
+            class="slide__img"
+            src="./assets/freepik__a-cool-picture-suitable-for-a-marketing-blog-that-__42912.jpeg"
+            alt="a-cool-picture-suitable-for-a-marketing-blog"
+          />
+          <span class="slide__tag">Web</span>
+          <h2 class="slide__title">Website Design: 7 steps Relauch, Revamp</h2>
+        </article>
+
+        <!-- article 2 -->
+        <article class="slide">
+          <img
+            class="slide__img"
+            src="./assets/freepik__the-style-is-candid-image-photography-with-natural__42914.jpeg"
+            alt="a-cool-picture-suitable-for-a-marketing-blog"
+          />
+          <span class="slide__tag">Design</span>
+          <h2 class="slide__title">Discovery, Scoping & Design</h2>
+        </article>
+
+       <!-- article 3 -->
+        <article class="slide">
+          <img
+            class="slide__img"
+            src="./assets/freepik__the-style-is-candid-image-photography-with-natural__68605.png"
+            alt="a-cool-picture-suitable-for-a-marketing-blog"
+          />
+          <span class="slide__tag">SEO</span>
+          <h2 class="slide__title">Who will i be working with</h2>
+        </article>
+
+       <!-- article 4 -->
+        <article class="slide">
+          <img
+            class="slide__img"
+            src="./assets/freepik__the-style-is-candid-image-photography-with-natural__68606.png"
+            alt="a-cool-picture-suitable-for-a-marketing-blog"
+          />
+          <span class="slide__tag">Team</span>
+          <h2 class="slide__title">Met our team</h2>
+        </article>
+
+        <!-- article 5 -->
+         <article class="slide">
+          <img
+            class="slide__img"
+            src="./assets/freepik__a-cool-picture-suitable-for-a-marketing-blog-that-__42912.jpeg"
+            alt="a-cool-picture-suitable-for-a-marketing-blog"
+          />
+          <span class="slide__tag">Learn</span>
+          <h2 class="slide__title">Top picks from The Bounce</h2>
+        </article>
+        
+</div>
+      </div>
+
+      <div>
+        <button class="btn prev-btn">
+          <span class="iconify" data-icon="mdi-arrow-left"></span>
+          <!-- <span class="sr-only">Previous Slide</span> -->
+        </button>
+         <button class="btn next-btn">
+          <span class="iconify" data-icon="mdi-arrow-right"></span>
+        </button>
+      </div>
+      <ul class="dots">
+        <li class="dot" value="0"></li>
+        <li class="dot" value="1"></li>
+        <li class="dot" value="2"></li>
+        <li class="dot" value="3"></li>
+        <li class="dot" value="4"></li>
+      </ul>
+    </section>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
