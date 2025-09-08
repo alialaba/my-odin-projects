@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+label{
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+
+.form-wrapper{
+    width: min(400px, 90%);
+    margin: 2em auto;
+}
+.field{
+    margin-top: 1em;
+}
+input, select{
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    outline: none;
+    border: 1px solid #DDDDE0;
+}
+button{
+    width: 100%;
+    border: none;
+    padding: 12px 14px;
+    margin-top: 1em;
+    font-size: 1.1rem;
+    cursor: pointer;
+    background: blue;
+    color: white;
+}
+.error-message{
+    /* display: none; */
+    color: red;
+}
+
+.valid{
+ border: 1px solid green;
+}
+.invalid{
+    border: 1px solid red;
+}

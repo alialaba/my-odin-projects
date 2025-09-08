@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+   <div class="form-wrapper">
+
+        <form novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email" />
+        <span class="error-email"></span>
+      </div>
+
+      <div class="field">
+        <label for="country">Country</label>
+        <input type="text" id="country" placeholder="Country"/>
+        <!-- <select>
+          <option value="de">Germany</option>
+          <option value="ng">Nigeria</option>
+          <option value="fr">France</option>
+          <option value="gh">Ghana</option>
+        </select> -->
+        <span class="error-country"></span>
+      </div>
+
+      <div class="field">
+        <label for="postal-code">Postal Code</label>
+        <input type="number" id="postal-code" placeholder="Postal Code" />
+        <span class="error-postal"></span>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" />
+        <span class="error-psw"></span>
+      </div>
+
+      <div class="field">
+        <label for="confirm-password">Confirm Password</label>
+        <input type="password" id="confirm-password" placeholder="Confirm Password" />
+        <span class="error-confirm-psw"></span>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+   </div>
+   <script src="./script.js"></script>
+  </body>
+</html>
